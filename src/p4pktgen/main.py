@@ -5,9 +5,7 @@ import logging
 from collections import defaultdict, OrderedDict
 import time
 
-import matplotlib.pyplot as plt
 from scapy.all import *
-from graphviz import Digraph
 
 from p4_top import P4_Top
 from p4_hlir import P4_HLIR
@@ -184,6 +182,7 @@ def break_into_lines(s, max_len=40):
 
 
 def generate_graphviz_graph(pipeline, graph):
+    from graphviz import Digraph
     dot = Digraph(comment=pipeline.name)
     for node in graph.graph:
         assert node in pipeline.conditionals or node in pipeline.tables
